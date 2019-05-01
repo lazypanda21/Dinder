@@ -1,7 +1,7 @@
 # Dinder
 #Dog Tinder
 
-## Help your dog find a date!!
+### Help your dog find a date!!
 
 ### Our app Dinder will help the owner and their dogs to find friends and possibly breed.
 
