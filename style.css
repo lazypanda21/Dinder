@@ -1,0 +1,28 @@
+* {
+    font-family: "Cooper Black";
+}
+
+.jumbotron {
+    text-align:center;
+    text-emphasis: italic;
+    color: #ff9f00;
+    background-color: #FFFFFF;
+    border-bottom-width: 2px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sidebar {
+    background-color: #ff9f00;
+}
