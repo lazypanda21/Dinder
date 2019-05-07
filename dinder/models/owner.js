@@ -35,6 +35,6 @@ module.exports = function(sequelize, DataTypes) {
       tableName: "employee"
     }
   );
-
+  
   return Owner;
 };

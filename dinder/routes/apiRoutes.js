@@ -26,22 +26,9 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-  app.get("/api/Skills", function(req, res) {
-    db.Skills.findAll({}).then(function(result) {
-      res.json(result);
-    });
-  });
   app.get("/api/Jobs", function(req, res) {
     db.Jobs.findAll({}).then(function(result) {
       res.json(result);
-    });
-  });
-  app.get("/api/Jobs/:jobTitle", function(req, res) {
-    db.Employee.findone({
-      where: {
-      id: req.params.jobTitle
-    }}).then(function(result) {
-      res.json({JobName : result.jobTitle});
     });
   });
   // Create a new example
@@ -55,8 +42,8 @@ module.exports = function(app) {
       res.json(dbLogin);
     });
   });
-  app.post("/api/Employee", function(req, res) {
-    db.Employee.create({
+  app.post("/api/Dog", function(req, res) {
+    db.Dog.create({
       userName: req.body.userName,
       name: req.body.name,
       jobTitle: req.body.jobTitle,
@@ -66,27 +53,45 @@ module.exports = function(app) {
       res.json(dbEmployee);
     });
   });
-  app.put("/api/Employee/:userName", function (req, res) {
-    db.Employee.update(
+  app.put("/api/Dog/:DogName", function (req, res) {
+    db.Dog.update(
       {
-        name: req.body.name,
-        jobTitle: req.body.jobTitle,
-        contactInfo: req.body.contactInfo,
-        bio: req.body.bio},
-      {where: { userName: req.params.userName
+        dogName: req.body.dogName,
+        breed: req.body.breed,
+        gender: req.body.gender,
+        age: req.body.age,
+        weight: req.body.weight
+      },
+      {where: { dogName: req.params.dogName
       }})
     .then(function(result) {
       res.json({
+        dogName: result.dogName,
+        breed: result.breed,
+        gender: result.gender,
+        age: result.age,
+        weight: result.weight
+      })
+    });
+  });
+
+  app.get("/api/Dog/:breed", function(req, res) {
+    db.Dog.findAll({
+      where: {
+        Breed: req.params.breed
+      }
+    }).then(function(result) {
+      res.json({
+        id: result.id,
         userName: result.userName,
         name: result.name,
         jobTitle: result.jobTitle,
         contactInfo: result.contactInfo,
         bio: result.bio
-      })
+      });
     });
   });
-
-  app.get("/api/Employee/:userName", function(req, res) {
+  app.get("/api/Dog/:gender", function(req, res) {
     db.Employee.findOne({
       where: {
         userName: req.params.userName
@@ -103,21 +108,6 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/Skills", function(req, res) {
-    console.log(req.body);
-    db.Skills.create({
-      skill: req.body.skill
-    }).then(function(dbSkill) {
-      res.json(dbSkill);
-    });
-  });
-  app.post("/api/Jobs", function(req, res) {
-    db.Jobs.create({
-      jobTitle: req.body.jobTitle
-    }).then(function(dbJobs) {
-      res.json(dbJobs);
-    });
-  });
 
   app.post("/api/Rtable", function(req, res) {
     db.Rtable.create({

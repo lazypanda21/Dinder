@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         references: {
           model: "login",
-          key: "UserName"
+          key: "userName"
         },
-        field: "UserName"
+        field: "userName"
       },
       dogName: {
         type: DataTypes.STRING(20),
