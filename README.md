@@ -1,13 +1,23 @@
 # Dinder
-#Dog Tinder
 
-### Help your dog find a date!!
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-### Our app Dinder will help the owner and their dogs to find friends and possibly breed.
+Dinder is an app that helps dog owners to find their pets hot dates!!
+  Deployed Link:
 
-## Technologies Used:
+### What you can do with Dinder:
 
-* React
-* React Bootstrap
-* MongoDB
-* API
+  - Search for dogs based on breed, distance, gender, and age.
+  - Explore new dogs and swipe left or right to ignore and keep! Just like Tinder!
+  - Create dog profiles and let others see.
+
+### Tech:
+- React
+- React Bootstrap
+- Sequelize
+- Google Map Api
+
+### UI:
+![Home Page](./Readme_img/dinder-home.jpg)
+
+![Search Result Page](./Readme_img/dinder-dashboard.jpg)
