@@ -1,0 +1,45 @@
+* {
+    font-family: "Cooper Black";
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 50px auto;
+}
+
+.jumbotron {
+    color: #ff9f00;
+    font-style: italic;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 6px -6px black;
+    height: 250px;
+    margin: 0px auto;
+}
+
+h1 {
+    font-size: 100px;
+    text-emphasis: italic;
+    padding-left: 200px;
+}
+
+body {
+    position: relative;
+    color: #FFFFFF;
+}
+
+#sidebar {
+    background-color: #ff9f00;
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #ff9f00;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 -8px 6px -6px black;
+    margin-top:40px;
+}
