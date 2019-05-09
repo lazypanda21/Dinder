@@ -32,9 +32,9 @@ module.exports = function(sequelize, DataTypes) {
       },
     },
     {
-      tableName: "employee"
+      tableName: "owner"
     }
   );
-  
+
   return Owner;
 };

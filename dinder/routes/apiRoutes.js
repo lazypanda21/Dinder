@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.post("/api/Login", function(req, res) {
-    db.Login.findOne({
+    db.OwnerLogin.findOne({
       where: {
         userName: req.body.userName,
         password: req.body.password
@@ -15,62 +15,67 @@ module.exports = function(app) {
         return res.json({
           login: true,
           userId: result.id,
-          userName: result.userName,
-          status: result.status
+          userName: result.userName
         });
       }
     });
   });
+
+
   app.get("/api/Login", function(req, res) {
-    db.Login.findAll({}).then(function(result) {
+    db.OwnerLogin.findAll({}).then(function(result) {
       res.json(result);
     });
   });
-  app.get("/api/Jobs", function(req, res) {
-    db.Jobs.findAll({}).then(function(result) {
-      res.json(result);
-    });
-  });
+
+
+
   // Create a new example
   app.post("/api/Login/create", function(req, res) {
-    db.Login.create({
+    db.OwnerLogin.create({
       userName: req.body.userName,
       password: req.body.password,
-      status: req.body.status
+
     }).then(function(dbLogin) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbLogin);
     });
   });
+
+
   app.post("/api/Dog", function(req, res) {
     db.Dog.create({
       userName: req.body.userName,
-      name: req.body.name,
-      jobTitle: req.body.jobTitle,
-      contactInfo: req.body.contactInfo,
-      bio: req.body.bio
-    }).then(function(dbEmployee) {
-      res.json(dbEmployee);
+      dogName: req.body.DogName,
+      breed: req.body.Breed,
+      gender: req.body.Gender,
+      age: req.body.Age,
+      weight: req.body.Weight
+    }).then(function(dbdog) {
+      res.json(dbdog);
     });
   });
+
+// update dog name
+
   app.put("/api/Dog/:DogName", function (req, res) {
     db.Dog.update(
       {
-        dogName: req.body.dogName,
-        breed: req.body.breed,
-        gender: req.body.gender,
-        age: req.body.age,
-        weight: req.body.weight
+        dogName: req.body.DogName,
+        breed: req.body.Breed,
+        gender: req.body.Gender,
+        age: req.body.Age,
+        weight: req.body.Weight
       },
       {where: { dogName: req.params.dogName
       }})
     .then(function(result) {
       res.json({
-        dogName: result.dogName,
-        breed: result.breed,
-        gender: result.gender,
-        age: result.age,
-        weight: result.weight
+        dogName: req.body.DogName,
+        breed: req.body.Breed,
+        gender: req.body.Gender,
+        age: req.body.Age,
+        weight: req.body.Weight
       })
     });
   });
@@ -78,89 +83,79 @@ module.exports = function(app) {
   app.get("/api/Dog/:breed", function(req, res) {
     db.Dog.findAll({
       where: {
-        Breed: req.params.breed
+        breed: req.params.Breed
       }
     }).then(function(result) {
       res.json({
         id: result.id,
-        userName: result.userName,
-        name: result.name,
-        jobTitle: result.jobTitle,
-        contactInfo: result.contactInfo,
-        bio: result.bio
+        userName: result.UserName,
+        dogName: result.dogName,
+        breed: result.Breed,
+        gender: result.Gender,
+        age : result.Age,
+        weight: result.Weight
       });
     });
   });
+
+
   app.get("/api/Dog/:gender", function(req, res) {
-    db.Employee.findOne({
+    db.Dog.findOne({
       where: {
-        userName: req.params.userName
+        gender: req.params.gender
       }
     }).then(function(result) {
       res.json({
         id: result.id,
-        userName: result.userName,
-        name: result.name,
-        jobTitle: result.jobTitle,
-        contactInfo: result.contactInfo,
-        bio: result.bio
+        userName: result.UserName,
+        dogName: result.dogName,
+        breed: result.Breed,
+        gender: result.Gender,
+        age : result.Age,
+        weight: result.Weight
       });
     });
   });
 
 
   app.post("/api/Rtable", function(req, res) {
-    db.Rtable.create({
-      idEmployee: req.body.idEmployee,
-      idSkills: req.body.idSkills
+    db.pivotTable.create({
+      idDog: req.body.idDog,
+      idOwner: req.body.idOwner
     }).then(function(dbRtable) {
       res.json(dbRtable);
     });
   });
 
-  app.post("/api/query", function(req, res) {
-    var array;
-    console.log(req.body);
-    array = req.body["skillIds[]"];
-    db.Employee.findAll({
-      include: [
-        {
-          model: db.Skills,
-          required: true,
-          attributes: ["skill"],
-          // eslint-disable-next-line camelcase
-          through: { where: { idSkills: array } }
-        }
-      ]
-    }).then(function(result) {
-      var barray = [];
-      for (var i = 0 ; i< result.length; i++){
-        if (result[i].Skills.length === array.length){
-          barray.push(result[i]);
-        }
-      }
-      res.json(barray);
-    });
-  });
+  
 
-  app.get("/api/Rtable/:idEmployee", function(req, res) {
-    console.log(req.params.idEmployee);
+// get all the dogs that one owner has
+  app.get("/api/Rtable/:idOwner", function(req, res) {
+    console.log(req.params.idOwner);
     var carray = []
-    db.Rtable.findAll({
-       where: { idEmployee: req.params.idEmployee } 
+    db.pivotTable.findAll({
+       where: { idOwner: req.params.idOwner}
     }).then(function(result) {
       for(var i = 0; i < result.length; i++){
-        carray.push(result[i].idSkills)
+        carray.push(result[i].idDog)
       }
       res.json(carray);
     });
   });
-  // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.json(dbExample);
-  //   });
-  // });
+
+
+// get the owner from the dog
+
+app.get("/api/Rtable/:idDog", function(req, res) {
+  console.log(req.params.idDog);
+  var carray = []
+  db.pivotTable.findAll({
+     where: { idDog: req.params.idDog }
+  }).then(function(result) {
+    for(var i = 0; i < result.length; i++){
+      carray.push(result[i].idSkills)
+    }
+    res.json(carray);
+  });
+});
 };
