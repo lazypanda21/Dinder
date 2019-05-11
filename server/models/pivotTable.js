@@ -15,41 +15,43 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.INTEGER(11),
           allowNull: false,
           references: {
-            model: "dog",
-            key: "id"
+            model: "Dog",
+            key: "Dogname"
           },
           field: "idDog"
         },
+
         idOwner: {
           type: DataTypes.INTEGER(11),
           allowNull: false,
           references: {
             model: "owner",
-            key: "id"
+            key: "UserName"
           },
           field: "idOwner"
         },
-        idMessage: {
-          type: DataTypes.INTEGER(11),
-          allowNull: false,
-          references: {
-            model: "messages",
-            key: "id"
-          },
-          field: "idMessage"
-        },
+
+        // idMessage: {
+        //   type: DataTypes.INTEGER(11),
+        //   allowNull: false,
+        //   references: {
+        //     model: "messages",
+        //     key: "id"
+        //   },
+        //   field: "idMessage"
+        // },
       },
       {
         tableName: "pivotTable",
         classMethods: {
           associate: function(models) {
             pivotTable.belongsTo(models.Dog, {
-              foreignKey: "id",
-              targetKey: "idDog"
+              foreignKey: "DogName",
+              targetKey: "DogName"
             });
             pivotTable.belongsTo(models.idOwner, {
-              foreignKey: "id",
-              targetKey: "idOwner"
+              foreignKey: "UserName",
+              targetKey: "UserName"
             });
           }
         }

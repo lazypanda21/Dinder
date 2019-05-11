@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
   Dog.associate = function(models) {
     Dog.belongsTo(models.Owner, {
       through: models.pivotTable,
-      foreignKey: "idDog"
+      foreignKey: "idOwner"
     });
   };
 

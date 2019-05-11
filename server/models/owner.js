@@ -36,9 +36,10 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
   Owner.associate = function(models) {
-    
+
     Owner.hasMany(models.Dog, {
-      onDelete: "cascade"
+      through: models.pivotTable,
+      foreignKey: "idDog"
     });
   };
 
