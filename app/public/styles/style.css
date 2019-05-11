@@ -13,17 +13,33 @@
     background-color: #FFFFFF;
     box-shadow: 0 8px 6px -6px black;
     height: 250px;
-    margin: 0px auto;
+    margin: -30px auto;
 }
 
 h1 {
-    font-size: 100px;
+    font-size: 75px;
     text-emphasis: italic;
 }
 
-img {
-    max-width: 100px;
+i {
+    padding-left: 100px;
 }
+
+.container {
+    padding-top:100px;
+}
+
+img {
+    max-width: 200px;
+}
+
+/* Text Over Image on Home Page */
+.centered {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 h2 {
     padding-top:50px;
@@ -32,6 +48,10 @@ h2 {
 body {
     position: relative;
     color: #FFFFFF;
+}
+
+#profile-info {
+    color:#0000;
 }
 
 #sidebar {
