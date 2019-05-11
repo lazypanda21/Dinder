@@ -16,9 +16,23 @@
     margin: -30px auto;
 }
 
+/*Jumbotron headers*/
 h1 {
     font-size: 75px;
     text-emphasis: italic;
+}
+h2 {
+    padding-top:50px;
+}
+
+/*Sidebar headers*/
+h3 {
+    color:#ffff;
+}
+
+/*Bio headers*/
+h4{
+    color: #ff9f00;
 }
 
 i {
@@ -39,15 +53,11 @@ img {
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-h2 {
-    padding-top:50px;
+    color: #FFFFFF;
 }
 
 body {
     position: relative;
-    color: #FFFFFF;
 }
 
 #profile-info {
@@ -57,6 +67,7 @@ body {
 #sidebar {
     background-color: #ff9f00;
     padding: 100px;
+    color: #FFFFFF;
 }
 
 footer {
