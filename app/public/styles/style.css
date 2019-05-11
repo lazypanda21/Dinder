@@ -19,7 +19,14 @@
 h1 {
     font-size: 100px;
     text-emphasis: italic;
-    padding-left: 200px;
+}
+
+img {
+    max-width: 100px;
+}
+
+h2 {
+    padding-top:50px;
 }
 
 body {
@@ -29,6 +36,7 @@ body {
 
 #sidebar {
     background-color: #ff9f00;
+    padding: 100px;
 }
 
 footer {
