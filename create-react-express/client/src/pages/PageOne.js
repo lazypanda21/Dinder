@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-
+import { Container, Jumbotron } from "react-bootstrap";
 import "./PageOne.css";
 
 class PageOne extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <Jumbotron>
+        <Container>
+        <h1>Dinder</h1> <i className="fas fa-bone fa-2x"></i>
+          <h2>A place for breeding</h2>
+        </Container>
+      </Jumbotron>
 
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
     );
   }
 }
