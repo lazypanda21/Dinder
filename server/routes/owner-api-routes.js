@@ -21,14 +21,14 @@ module.exports = function(app) {
           }
         });
       });
-    
+
     // retrieve login info or use session storage
       app.get("/api/Login", function(req, res) {
         db.OwnerLogin.findAll({}).then(function(result) {
           res.json(result);
         });
       });
-    
+
       // Create a new user when hit register
       app.post("/api/Login/create", function(req, res) {
         db.OwnerLogin.create({
@@ -49,7 +49,7 @@ module.exports = function(app) {
     });
 
 
-    
+
     app.get("/api/Owner/:UserName", function(req, res) {
 
         db.Owner.findOne({
@@ -57,11 +57,11 @@ module.exports = function(app) {
             UserName: req.params.UserName
           },
           include: [db.Dog]
-        }).then(function(dbdog) {
-          res.json(dbdog);
+        }).then(function(dbowner) {
+          res.json(dbowner);
         });
       });
-    
+
 
       // saving a new Owner info
     app.post("/api/Owner", function(req, res) {

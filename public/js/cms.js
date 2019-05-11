@@ -5,6 +5,7 @@ $(document).ready(function() {
   var doggender = $("#doggender");
   var dogweight = $("#dogweight");
   var dogage = $("#dogage");
+  var dogimage = $("#dogimage");
   var cmsForm = $("#cms");
   var username= sessionStorage.getItem("user");
   // Adding an event listener for when the form is submitted
@@ -16,7 +17,7 @@ $(document).ready(function() {
   // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
 
-  
+
 
   if (url.indexOf("?post_id=") !== -1) {
     postId = url.split("=")[1];
@@ -30,7 +31,7 @@ $(document).ready(function() {
   // Getting the authors, and their posts
   getOwner();
 
- 
+
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -45,6 +46,7 @@ $(document).ready(function() {
       Age: dogage.val(),
       Weight: dogweight.val(),
       Gender: doggender.val().trim(),
+      Image : dogimage.val().trim(),
       UserName: ownerId
     };
 
@@ -88,6 +90,7 @@ $(document).ready(function() {
         doggender.val(data.Gender);
         dogweight.val(data.Weight);
         dogage.val(data.Age);
+        dogimage.val(data.Image);
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
@@ -99,7 +102,7 @@ $(document).ready(function() {
   function getOwner() {
     $.get("/api/Owner", renderOwnerList);
   }
-  
+
   // // Creates the owner options in the dropdown
   function createOwnerRow(owner) {
     var listOption = $("<option>");
@@ -120,9 +123,6 @@ $(document).ready(function() {
       });
   }
 
-
-
-
   function renderOwnerList(data) {
     if (!data.length) {
       window.location.href = "/authors";
@@ -132,14 +132,12 @@ $(document).ready(function() {
     for (var i = 0; i < data.length; i++) {
       rowsToAdd.push(createOwnerRow(data[i]));
     }
-    
+
     console.log(rowsToAdd);
 
   }
-  
+
 
   console.log("askjdhaksjdhsakjdhasd",ownerId);
   console.log("akldjaksldaskldjkalsd",postId);
 });
-
-

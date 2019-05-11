@@ -46,7 +46,12 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         defaultValue: 0,
         field: "Weight"
-      }
+      },
+      Image:{
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        field: "Image"
+      },
     },
     {
       tableName: "Dog"
@@ -55,8 +60,8 @@ module.exports = function(sequelize, DataTypes) {
 
   Dog.associate = function(models) {
     Dog.belongsTo(models.Owner, {
-      through: models.pivotTable,
-      foreignKey: "idOwner"
+
+      foreignKey: "UserName"
     });
   };
 

@@ -35,11 +35,12 @@ module.exports = function(sequelize, DataTypes) {
       tableName: "owner"
     }
   );
-  Owner.associate = function(models) {
 
+  //
+  Owner.associate = function(models) {
     Owner.hasMany(models.Dog, {
-      through: models.pivotTable,
-      foreignKey: "idDog"
+
+      foreignKey: "UserName"
     });
   };
 
