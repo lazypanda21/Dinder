@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PageOne from "./pages/PageOne";
 import PageTwo from "./pages/PageTwo";
-import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 
 function App() {
