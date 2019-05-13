@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING(20),
         allowNull: false,
         references: {
-          model: "login",
+          model: "ownerlogin",
           key: "userName"
         },
         field: "userName"
@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       weight: {
         type: DataTypes.INTEGER(11),
         allowNull: true,
-        defaultValue: "Not specified",
+        defaultValue: 0,
         field: "Weight"
       }
     },

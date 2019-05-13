@@ -19,7 +19,7 @@ app.use(express.static("public"));
 //     defaultLayout: "main"
 //   })
 // );
-app.set("view engine", "handlebars");
+app.use(express.static("public"));
 
 // Routes
 require("./routes/apiRoutes")(app);

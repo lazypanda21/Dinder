@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     {
-      tableName: "dogs"
+      tableName: "messages"
     }
   );
 

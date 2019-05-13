@@ -1,40 +1,38 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  var Owner = sequelize.define(
-    "Owner",
+  var Employer = sequelize.define(
+    "Employer",
     {
-      id: {
-        type: DataTypes.INTEGER(11),
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        field: "id"
-      },
+      // id: {
+      //   type: DataTypes.INTEGER(11),
+      //   allowNull: false,
+      //   primaryKey: true,
+      //   field: "id"
+      // },
       userName: {
         type: DataTypes.STRING(20),
         allowNull: false,
         references: {
-          model: "ownerlogin",
+          model: "login",
           key: "UserName"
         },
         field: "UserName"
       },
-      name: {
+      companyName: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        field: "Name"
+        field: "CompanyName"
       },
-      location: {
+      contactInfo: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        field: "Location"
-      },
+        field: "ContactInfo"
+      }
     },
     {
-      tableName: "owner"
+      tableName: "employer"
     }
   );
-
-  return Owner;
+  return Employer;
 };

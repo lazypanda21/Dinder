@@ -7,7 +7,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
-    "sequelize": "^5.8.4"
+    "sequelize": "^5.8.5"
   },
   "scripts": {
     "start": "react-scripts start",
