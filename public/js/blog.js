@@ -43,15 +43,15 @@ $(document).ready(function() {
   }
 
   // This function does an API call to delete posts
-  function deletePost(id) {
-    $.ajax({
-      method: "DELETE",
-      url: "/api/Dog/" + id
-    })
-      .then(function() {
-        getPosts(postCategorySelect.val());
-      });
-  }
+  // function deletePost(id) {
+  //   $.ajax({
+  //     method: "DELETE",
+  //     url: "/api/Dog/" + id
+  //   })
+  //     .then(function() {
+  //       getPosts(postCategorySelect.val());
+  //     });
+  // }
 
   // InitializeRows handles appending all of our constructed post HTML inside blogContainer
   function initializeRows() {

@@ -11,15 +11,19 @@ module.exports = function(sequelize, DataTypes) {
       //   primaryKey: true,
       //   field: "id"
       // },
-      UserName: {
-        type: DataTypes.STRING(20),
-        allowNull: false,
-        references: {
-          model: "ownerlogin",
-          key: "UserName"
-        },
-        field: "UserName"
-      },
+
+
+
+      // UserName: {
+      //   type: DataTypes.STRING(20),
+      //   allowNull: false,
+      //   references: {
+      //     model: "ownerlogin",
+      //     key: "UserName"
+      //   },
+      //   field: "UserName"
+      // },
+      
       DogName: {
         type: DataTypes.STRING(20),
         allowNull: false,
@@ -50,8 +54,9 @@ module.exports = function(sequelize, DataTypes) {
       Image:{
         type: DataTypes.STRING(50),
         allowNull: false,
+        defaultValue: "Not specified",
         field: "Image"
-      },
+      }
     },
     {
       tableName: "Dog"
@@ -60,8 +65,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Dog.associate = function(models) {
     Dog.belongsTo(models.Owner, {
-
-      foreignKey: "UserName"
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 

@@ -23,13 +23,17 @@ module.exports = function(sequelize, DataTypes) {
       Name: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        field: "Name"
+        field: "Name",
+        validate: {
+          len: [1]
+        }
       },
       Location: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        field: "Location"
-      },
+        field: "Location",
+        len: [1]
+      }
     },
     {
       tableName: "owner"
@@ -39,8 +43,7 @@ module.exports = function(sequelize, DataTypes) {
   //
   Owner.associate = function(models) {
     Owner.hasMany(models.Dog, {
-
-      foreignKey: "UserName"
+      
     });
   };
 

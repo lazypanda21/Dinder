@@ -34,10 +34,10 @@ module.exports = function(app) {
         db.OwnerLogin.create({
           UserName: req.body.UserName,
           Password: req.body.Password,
-        }).then(function(dbLogin) {
-          // We have access to the new todo as an argument inside of the callback function
-          res.json(dbLogin);
-        });
+        }).catch(function(err) {
+    // print the error details
+    console.log(err, request.body.email);
+});
       });
 
     // get all the owners with their dogs
@@ -75,45 +75,45 @@ module.exports = function(app) {
         });
 
 
-  app.post("/api/Rtable", function(req, res) {
-    db.pivotTable.create({
-      idDog: req.body.idDog,
-      idOwner: req.body.idOwner
-    }).then(function(dbRtable) {
-      res.json(dbRtable);
-    });
-  });
+  // app.post("/api/Rtable", function(req, res) {
+  //   db.pivotTable.create({
+  //     idDog: req.body.idDog,
+  //     idOwner: req.body.idOwner
+  //   }).then(function(dbRtable) {
+  //     res.json(dbRtable);
+  //   });
+  // });
 
 
 
 // get all the dogs that one owner has
-  app.get("/api/Rtable/:idOwner", function(req, res) {
-    console.log(req.params.idOwner);
-    var carray = []
-    db.pivotTable.findAll({
-       where: { idOwner: req.params.idOwner}
-    }).then(function(result) {
-      for(var i = 0; i < result.length; i++){
-        carray.push(result[i].idDog)
-      }
-      res.json(carray);
-    });
-  });
+  // app.get("/api/Rtable/:idOwner", function(req, res) {
+  //   console.log(req.params.idOwner);
+  //   var carray = []
+  //   db.pivotTable.findAll({
+  //      where: { idOwner: req.params.idOwner}
+  //   }).then(function(result) {
+  //     for(var i = 0; i < result.length; i++){
+  //       carray.push(result[i].idDog)
+  //     }
+  //     res.json(carray);
+  //   });
+  // });
 
 
 // get the owner from the dog
 
-app.get("/api/Rtable/:idDog", function(req, res) {
-  console.log(req.params.idDog);
-  var carray = []
-  db.pivotTable.findAll({
-     where: { idDog: req.params.idDog }
-  }).then(function(result) {
-    for(var i = 0; i < result.length; i++){
-      carray.push(result[i].idSkills)
-    }
-    res.json(carray);
-  });
-});
+// app.get("/api/Rtable/:idDog", function(req, res) {
+//   console.log(req.params.idDog);
+//   var carray = []
+//   db.pivotTable.findAll({
+//      where: { idDog: req.params.idDog }
+//   }).then(function(result) {
+//     for(var i = 0; i < result.length; i++){
+//       carray.push(result[i].idSkills)
+//     }
+//     res.json(carray);
+//   });
+// });
 
 };
