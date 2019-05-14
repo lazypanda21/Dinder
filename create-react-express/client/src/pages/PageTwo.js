@@ -9,7 +9,6 @@ class PageTwo extends Component {
     return (
       <Container>
         <Show></Show>
-        <Title></Title>
         <Row>
           <Col>
           <p>column one</p>
