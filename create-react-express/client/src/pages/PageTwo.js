@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Show from "../components/Show";
-import Title from "../components/Title";
 import { Container, Row, Col } from "react-bootstrap";
 import "./PageTwo.css";
 
