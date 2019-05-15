@@ -10,6 +10,24 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true,
         field: "id"
       },
+      ThreadId:{
+        type: DataTypes.INTEGER(11),
+        allowNull: false,
+        field:"ThreadId",
+        default: 0
+      },
+      From:{
+        type: DataTypes.STRING(500),
+        allowNull: false,
+        unique: true,
+        field: "From"
+      },
+      To:{
+        type: DataTypes.STRING(500),
+        allowNull: false,
+        unique: true,
+        field: "To"
+      },
       message: {
         type: DataTypes.STRING(500),
         allowNull: false,
@@ -24,8 +42,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Messages.associate = function(models) {
     Messages.belongsTo(models.Owner, {
-      through: models.pivotTable,
-      foreignKey: "idOwner"
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
   return Messages;
