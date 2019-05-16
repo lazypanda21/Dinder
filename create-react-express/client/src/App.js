@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PageOne from "./pages/PageOne";
 import PageTwo from "./pages/PageTwo";
 import NoMatch from "./pages/NoMatch";
+import history from './history'
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Switch>
           <Route exact path="/" component={PageOne} />

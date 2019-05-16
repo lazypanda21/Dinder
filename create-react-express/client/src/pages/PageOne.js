@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Link } from "react";
 import { Container, Row, Col, Image, Form, ButtonToolbar, Button, Modal } from "react-bootstrap";
 import Title from "../components/Title";
 import "./PageOne.css";
 import Footer from "../components/Footer";
 import { Input, FormBtn } from "../components/Form";
 import API from "../utils/API";
+import PageTwo from './PageTwo'
+
+
+
+
 
 class PageOne extends Component {
   constructor(props, context) {
@@ -18,7 +23,6 @@ class PageOne extends Component {
       UserName: "",
       Password: ""
     };
-
   }
 
   handleClose() {
@@ -43,10 +47,29 @@ class PageOne extends Component {
         UserName: this.state.UserName,
         Password: this.state.Password
       })
-        .then(console.log(event))
+        .then(this.handleClose())
         .catch(err => console.log(err));
     }
   };
+
+  handleLogSubmit = event =>  {
+    event.preventDefault();
+    console.log('click')
+    if (this.state.UserName && this.state.Password) {
+      console.log('yes')
+      API.logUser({
+        UserName: this.state.UserName,
+        Password: this.state.Password
+      })
+      .then(function(logindata){
+        console.log(logindata.data.login)
+        if (logindata.data.login === true){
+        return <PageTwo/>
+        }
+      })
+        .catch(err => console.log(err));
+  }
+};
 
   render() {
     return (
@@ -56,26 +79,33 @@ class PageOne extends Component {
         <Row>
           <Col>
             <Image src="https://cdn.royalcanin-weshare-online.io/pCJJPmYBaxEApS7LeAbn/v1/ed7h-how-to-buy-a-puppy-hero-dog" fluid />
-            <p>Join today and connect with other dog-breeders near you!</p>
+              <p>Join today and connect with other dog-breeders near you!</p>
           </Col>
           <Col>
             <Row>
               <Col>
-                <h2>Welcome!</h2>
+                  <h2>Welcome!</h2>
                 <Form>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter User Name" />
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                  </Form.Group>
+                  <Input
+                    value={this.state.UserName}
+                    onChange={this.handleInputChange}
+                    name="UserName"
+                    placeholder="User Name (required)"
+                  />
+                  <Input
+                    value={this.state.Password}
+                    onChange={this.handleInputChange}
+                    name="Password"
+                    placeholder="Password (required)"
+                  />
 
                   <ButtonToolbar>
-                    <Button variant="primary" size="lg">
+                  <FormBtn
+                    disabled={!(this.state.UserName && this.state.Password)}
+                    onClick={this.handleLogSubmit}
+                    >
                       Sign In
-                  </Button>
+                  </FormBtn>
                   </ButtonToolbar>
                   <ButtonToolbar className="mt-3">
                     <Button variant="secondary" size="sm" onClick={this.handleShow}>
@@ -125,8 +155,6 @@ class PageOne extends Component {
           </Modal.Footer>
         </Modal>
       </Container>
-
-
 
     );
   }
