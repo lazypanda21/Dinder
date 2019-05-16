@@ -20,75 +20,89 @@
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
+
             <div class="col-sm-4">
             </div>
+
             <div class="col-sm-6">
                 <h1>Dinder</h1>
                 <i class="fas fa-bone fa-4x"></i>
             </div>
+
         </div>
-    </div>
     </div>
 
     <div class="container">
         <div class="row">
 
+            <!--Navigation Bar-->
+            <div class="col-sm-3">
+                <nav class="nav flex-column">
+                    <ul>
+                        <li><a class="nav-link inactive" href="#">Username</a></li>
+                        <li><a class="nav-link" href="#">My Account</a></li>
+                        <li><a class="nav-link" href="#">Register A Pet</a></li>
+                        <li><a class="nav-link" href="#">Search a Breed</a></li>
+                        <li><a class="nav-link" href="#">Browse Locally</a></li>
+                        <li><a class="nav-link" href="#">Settings</a></li>
+                        <li><a class="nav-link" href="#">Report Sketchiness</a></li>
+                    </ul>
+                </nav>
+            </div>
+
             <!--Profile Info-->
-            <div class="col-sm-8">
-                <div class="row">
 
-                    <!--Picture-->
-                    <div class="col-sm-4">
-                        <img src="https://via.placeholder.com/200">
+            <!--Picture-->
+            <div class="col-sm-3">
+                <img src="https://via.placeholder.com/200">
+                <br>
+                <br>
+                <p>(Pic of Dog or Owner depending on future setup)</p>
+            </div>
+
+            <!--User & Dog Bio-->
+            <div class="col-sm-3">
+
+                <div class="user-bio">
                         <br>
                         <br>
-                        <p>(Pic of Dog or Owner depending on future setup)</p>
-                    </div>
-
-                    <!--User Bio-->
-                    <div class="col-sm-8">
-                        <div class="user-bio">
-                                <br>
-                                <br>
-                            <h4>Owner Info</h4>
-                            <br>
-                            <br>
-                            <ul>
-                                <li>Minneapolis, Minnesota</li>
-                                <li>Member for 3 Months</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h4>Owner Info</h4>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Minneapolis, Minnesota</li>
+                        <li>Member for 3 Months</li>
+                    </ul>
                 </div>
 
-                <!--Dog Bio-->
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="dog-bio">
-                                <br>
-                            <h4>Pet Info</h4>
-                                <br>
-                            <ul>
-                                <li>Breed</li>
-                                <li>Sex</li>
-                                <li>Age</li>
-                                <li>Weight</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="dog-bio">
+                        <br>
+                    <h4>Pet Info</h4>
+                        <br>
+                    <ul>
+                        <li>Breed</li>
+                        <li>Sex</li>
+                        <li>Age</li>
+                        <li>Weight</li>
+                    </ul>
                 </div>
+
             </div>
 
             <!--Right Sidebar-->
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <h3>Chat</h3>
+                        <h3>Send a treat to another Good Dog!</h3>
+                        <img class="img-fluid" id="treat-img" src="../images/DogTreats.jpg">
                     </div>
                     <p></p>
                 </nav>
             </div>
+
         </div>
+
+                
 
         <br>
         <hr>

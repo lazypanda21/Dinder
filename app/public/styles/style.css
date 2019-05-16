@@ -1,12 +1,47 @@
 * {
     font-family: "Cooper Black";
 }
-
+body {
+    position: relative;
+}
+.container {
+    padding-top:100px;
+}
 .wrapper {
     width: 1024px;
     margin: 50px auto;
 }
 
+
+/* Navigation Bar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+
+
+  /*Jumbotron*/
+h1 {
+    font-size: 75px;
+    text-emphasis: italic;
+}
+h2 {
+    padding-top:50px;
+}
 .jumbotron {
     color: #ff9f00;
     font-style: italic;
@@ -16,60 +51,44 @@
     margin: -30px auto;
 }
 
-/*Jumbotron headers*/
-h1 {
-    font-size: 75px;
-    text-emphasis: italic;
-}
-h2 {
-    padding-top:50px;
-}
-
-/*Sidebar headers*/
-h3 {
-    color:#ffff;
-}
-
-/*Bio headers*/
-h4{
-    color: #ff9f00;
-}
-
-i {
-    padding-left: 100px;
-}
-
-.container {
-    padding-top:100px;
-}
-
-img {
-    max-width: 200px;
-}
 
 /* Text Over Image on Home Page */
 .centered {
     position: absolute;
-    top: 90%;
-    left: 50%;
+    top: 75%;
+    left: 80%;
     transform: translate(-50%, -50%);
     color: #FFFFFF;
 }
 
-body {
-    position: relative;
-}
 
+/*Profile Bio*/
+h4{
+    color: #ff9f00;
+}
+i {
+    padding-left: 100px;
+    line-height:20px;
+}
 #profile-info {
     color:#0000;
 }
 
+/*Sidebar*/
+h3 {
+    color:#ffff;
+}
 #sidebar {
     background-color: #ff9f00;
-    padding: 100px;
+    padding: 25px;
     color: #FFFFFF;
 }
 
+#treat-img {
+    max-width:200px;
+}
+
+/*Footer*/
 footer {
     left: 0;
     bottom: 0;
