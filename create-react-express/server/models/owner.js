@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         field: "UserName"
       },
-      Name: {
+      Contact: {
         type: DataTypes.STRING(20),
         allowNull: false,
         field: "Name",

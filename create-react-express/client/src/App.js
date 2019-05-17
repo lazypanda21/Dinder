@@ -4,7 +4,7 @@ import PageOne from "./pages/PageOne";
 import PageTwo from "./pages/PageTwo";
 import NoMatch from "./pages/NoMatch";
 import history from './history'
-
+import Search from "./pages/Search";
 function App() {
   return (
     <Router history={history}>
@@ -13,6 +13,7 @@ function App() {
           <Route exact path="/" component={PageOne} />
           <Route exact path="/dogs" component={PageTwo} />
           <Route exact path="/dogs/:id" component={PageOne} />
+          <Route exact path="/search" component={Search} />
           <Route component={NoMatch} />
         </Switch>
       </div>

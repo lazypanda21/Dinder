@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
     // retrieve all info about dogs
     app.get("/api/Dog", function(req, res) {
-        db.Dog.findAll({}).then(function(req) {
+        db.Dog.findAll({attributes:['Breed']}).then(function(req) {
           res.json(req);
         });
       });

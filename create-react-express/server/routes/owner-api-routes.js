@@ -66,7 +66,7 @@ module.exports = function(app) {
     app.post("/api/Owner", function(req, res) {
         db.Owner.create({
             UserName:req.body.UserName,
-            Name: req.body.Name,
+            Contact: req.body.Contact,
             Location:req.body.Location
         }).then(function(dbdog) {
             res.json(dbdog);

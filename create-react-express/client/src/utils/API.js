@@ -28,6 +28,10 @@ export default {
     return axios.post("api/Owner", owner);
   },
 
+  // get dogs by breed
+  getDogs :function(dogbreeds){
+    return axios.get("/api/Dog",dogbreeds);
+  },
   // search for owner by usernmae
 
   searchOwner:function(Username) {
