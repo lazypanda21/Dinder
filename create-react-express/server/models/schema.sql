@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS DinderDB;
-CREATE DATABASE DinderDB;
+-- DROP DATABASE IF EXISTS DinderDB;
+-- CREATE DATABASE DinderDB;
 
-USE DinderDB;
+-- USE DinderDB;
 
-select * from ownerlogin;
-select * from dog;
-select * from owner;
+-- select * from ownerlogin;
+-- select * from dog;
+-- select * from owner;

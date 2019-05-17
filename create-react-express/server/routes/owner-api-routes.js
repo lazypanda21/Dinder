@@ -34,10 +34,9 @@ module.exports = function(app) {
         db.OwnerLogin.create({
           UserName: req.body.UserName,
           Password: req.body.Password,
-        }).catch(function(err) {
-    // print the error details
-    console.log(err, request.body.email);
-});
+        }).then(function(result)  {
+          res.json(result);
+        });
       });
 
     // get all the owners with their dogs

@@ -1,25 +1,45 @@
-.App {
-    text-align: center;
+* {
+  font-family: 'Shrikhand', cursive;
+}
+
+.jumbotron {
+  text-align:center;
+  text-emphasis: italic;
+  color: #ff9f00;
+  background-color: #FFFFFF;
+  border-bottom-width: 2px;
+  margin-bottom:0px;
+}
+  h1{
+    font-size: 75px;
   }
+  .fa-bone{
+    -ms-transform: rotate(-30deg); /* IE 9 */
+    -webkit-transform: rotate(-30deg); /* Safari */
+    transform: rotate(-30deg);
   
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
   }
-  
-  .App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
+
+.rightCol{
+  background-color: #ff9f00;
+  padding:15px;
+}
+.leftCol{
+  padding:0px;
+  background-image: url("https://cdn.royalcanin-weshare-online.io/pCJJPmYBaxEApS7LeAbn/v1/ed7h-how-to-buy-a-puppy-hero-dog");
+  background-size: cover;
+  background-position: center;
+}
+  .tagline{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 3px 3px #000;
+    color:#fff;
+    font-size: 24px;
   }
-  
-  .App-intro {
-    font-size: large;
-  }
-  
-  @keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
+
+.welcome{
+  color:#fff;
+}
