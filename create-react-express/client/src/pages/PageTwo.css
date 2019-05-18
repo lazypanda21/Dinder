@@ -1,3 +1,14 @@
 .NavBar{
-    
+    background-color:#ff9f00;
 }
+.logo{
+    font-size: 32px;
+    color:#fff;
+}
+a:not(.logo){
+    color:#fff;
+    margin-top:13px;
+}
+    a:hover{
+        color:#442a00;
+    }

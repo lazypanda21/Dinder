@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Show from "../components/Show";
 import NavBar from "../components/NavBar";
+import User from "../components/User";
+import UpdateUser from "../components/UpdateUser";
+import Dog from "../components/Dog";
+import AddDog from "../components/AddDog";
 import { Container, Row, Col } from "react-bootstrap";
 import "./PageTwo.css";
 
@@ -9,13 +13,21 @@ class PageTwo extends Component {
     return (
       <Container>
         <NavBar></NavBar>
+
         <Show></Show>
+
         <Row>
           <Col>
-            <p>column one</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <User></User>
+            <UpdateUser></UpdateUser>
           </Col>
           <Col>
-            <p>column two</p>
+            <Dog></Dog>
+            <AddDog></AddDog>
           </Col>
           <Col>
             <p>column three</p>
