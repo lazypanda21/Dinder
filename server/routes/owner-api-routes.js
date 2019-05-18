@@ -49,6 +49,18 @@ module.exports = function(app) {
     });
 
 
+  app.get("/api/Owner/:id", function (req, res) {
+    
+    db.Owner.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Dog]
+    }).then(function (dbAuthor) {
+      res.json(dbAuthor);
+    });
+  });
+
 
     app.get("/api/Owner/:UserName", function(req, res) {
 

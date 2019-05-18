@@ -1,18 +1,25 @@
 import React, { Component } from "react";
+import Show from "../components/Show";
+import { Container, Row, Col } from "react-bootstrap";
 import "./PageTwo.css";
 
 class PageTwo extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          this is the other page
-        </p>
-      </div>
+      <Container>
+        <Show></Show>
+        <Row>
+          <Col>
+          <p>column one</p>
+          </Col>
+          <Col>
+          <p>column two</p>
+          </Col>
+          <Col>
+          <p>column three</p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

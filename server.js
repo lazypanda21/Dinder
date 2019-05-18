@@ -25,7 +25,7 @@ app.set("view engine", "handlebars");
 require("./server/routes/dog-api-routes")(app);
 require("./server/routes/owner-api-routes")(app);
 require("./server/routes/htmlRoutes")(app);
-
+require("./server/routes/chat-api-routes")(app);
 var syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true

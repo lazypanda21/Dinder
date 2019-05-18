@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         field: "To"
       },
-      message: {
+      Message: {
         type: DataTypes.STRING(500),
         allowNull: false,
         unique: true,
