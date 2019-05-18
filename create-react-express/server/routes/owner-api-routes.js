@@ -74,6 +74,19 @@ module.exports = function(app) {
         });
 
 
+  app.put("/api/Owner", function (req, res) {
+    db.Owner.update(
+      req.body,
+      {
+        where: {
+          Username: req.body.UserName
+        }
+      }).then(function (dbPost) {
+        res.json(dbPost);
+      });
+  });
+
+
   // app.post("/api/Rtable", function(req, res) {
   //   db.pivotTable.create({
   //     idDog: req.body.idDog,

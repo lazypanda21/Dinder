@@ -57,7 +57,8 @@ class PageOne extends Component {
     event.preventDefault();
    
     if (this.state.UserName && this.state.Password) {
-     
+      let a = this;
+      sessionStorage.setItem("user", this.state.UserName);
       API.logUser({
         UserName: this.state.UserName,
         Password: this.state.Password
@@ -66,7 +67,7 @@ class PageOne extends Component {
         console.log(logindata.data.login)
     
         if (logindata.data.login === true){
-          window.location = '/dogs'
+          a.props.history.push('/dogs');
         }
       })
         .catch(err => console.log(err));

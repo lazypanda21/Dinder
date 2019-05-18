@@ -28,6 +28,9 @@ export default {
     return axios.post("api/Owner", owner);
   },
 
+  updateOwner: function(username){
+    return axios.post("api/Owner", username);
+  }
   // get dogs by breed
   getDogs :function(dogbreeds){
     return axios.get("/api/Dog",dogbreeds);
