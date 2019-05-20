@@ -6,13 +6,14 @@ import "./PageTwo.css";
 import { Input, FormBtn } from "../components/Form";
 import { Form,Button } from "react-bootstrap";
 import API from "../utils/API";
+import { throws } from "assert";
 
 
 class Search extends Component {
 
 constructor(props, context) {
     super(props, context);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     
    
@@ -21,54 +22,49 @@ constructor(props, context) {
       UserName: sessionStorage.getItem("user"),
       doginfo: [],
       searchby:"",
-      searchitem:""
+      searchfor:"male",
     };
   }
 
  
   
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
+ 
   handleSearchSubmit = event => {
     event.preventDefault();
-    if (this.state.searchby && this.state.searchitem) {
+   
+    if (this.state.searchby && this.state.searchfor) {
       switch (this.state.searchby){
         case 'breed' :
-            API.searchDogByBreed({
-              Breed : this.state.searchitem
-            })
-              .then(res => this.setState({doginfo:res.data}))
+          
+            API.searchDogByBreed(this.state.searchfor)
+              .then(res => console.log(res.data))
               .catch(err => console.log(err));
             break;
         case 'gender' :
-            API.searchDogByGender({
-              Gender : this.state.searchitem
-            })
-              .then(res => this.setState({doginfo:res.data}))
+            console.log("hdhdhdhdhdhdhd",this.state.searchby,this.state.searchfor);
+            API.searchDogByGender(
+              this.state.searchfor
+            )
+              .then(res => console.log(res.data))
               .catch(err => console.log(err));
             break;
         case 'age' :
             API.searchDogByAge({
-              Age : this.state.searchitem
+              Age : this.state.searchfor
             })
               .then(res => this.setState({doginfo:res.data}))
               .catch(err => console.log(err));
             break;
         case 'name' :
             API.searchDogByName({
-              DogName : this.state.searchitem
+              DogName : this.state.searchfor
             })
               .then(res => this.setState({doginfo:res.data}))
               .catch(err => console.log(err));
             break;
         case 'weight' :
             API.searchDogByWeight({
-              Weight : this.state.searchitem
+              Weight : this.state.searchfor
             })
               .then(res => this.setState({doginfo:res.data}))
               .catch(err => console.log(err));
@@ -85,6 +81,12 @@ constructor(props, context) {
   
 
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
   
 
@@ -93,7 +95,7 @@ constructor(props, context) {
       <Container>
         <NavBar></NavBar>
         <Show></Show>
-        
+        <Row>
           <Col>
           <h2>Hellow, {sessionStorage.getItem("user")}</h2>
 
@@ -106,31 +108,27 @@ constructor(props, context) {
               />
 
               <Input
-                value={this.state.searchitem}
+                value={this.state.searchfor}
                 onChange={this.handleInputChange}
                 name="searchcriteria"
-                placeholder="search criteria"
+                placeholder="search"
               />
                
               <Button 
-              disabled={!(this.state.searchby && this.state.searchitem)}
+              disabled={!(this.state.searchby && this.state.searchfor)}
               onClick={this.handleSearchSubmit.bind(this)}
               variant="primary" size="lg">
                     Search
               </Button>
-
             </Form>
-
             </Col>
-           
+            </Row>
             <Row>
             <ul>
                 <li>User:{sessionStorage.getItem("user")}</li>
-                
-                
+                <li>Dog info:{this.state.doginfo}</li>
             </ul>
             
-        
         </Row>
       </Container>
     );

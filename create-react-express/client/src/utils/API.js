@@ -40,7 +40,7 @@ export default {
 
   // search for a dog by breed
   searchDogByBreed: function(Breed) {
-    return axios.get("/api/Dog/", Breed);
+    return axios.get("/api/Dog/", Breed );
   },
 
   // search for a dog by gender

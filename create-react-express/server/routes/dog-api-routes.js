@@ -43,7 +43,7 @@ module.exports = function(app) {
 
 // retrieve a specific dog
     app.get("/api/Dog/:DogName", function(req, res) {
-    db.Post.findOne({
+    db.Dog.findOne({
       where: {
         DogName: req.params.DogName
       },
@@ -55,29 +55,32 @@ module.exports = function(app) {
 
     // search for a dog by breed, height,age
     app.get("/api/Dog/:Breed", function(req, res) {
+     
         db.Dog.findAll({
           where: {
             Breed: req.params.Breed
           }
         }).then(function(result) {
-          res.json({
-            id: result.id,
-            UserName: result.UserName,
-            DogName: result.dogName,
-            Breed: result.Breed,
-            Gender: result.Gender,
-            Age : result.Age,
-            Weight: result.Weight,
-            Image: result.Image,
-          });
+         
+          res.json(result);
+          // res.json({
+          //   id: result.id,
+          //   UserName: result.UserName,
+          //   DogName: result.dogName,
+          //   Breed: result.Breed,
+          //   Gender: result.Gender,
+          //   Age : result.Age,
+          //   Weight: result.Weight,
+          //   Image: result.Image,
+          // });
         });
       });
 
     //search for a dog by gender
       app.get("/api/Dog/:Gender", function(req, res) {
-        db.Dog.findOne({
+        db.Dog.findAll({
           where: {
-            Gender: req.params.Gender
+            Gender: req.Params.Gender
           }
         }).then(function(result) {
             res.json({
@@ -95,7 +98,7 @@ module.exports = function(app) {
 
     // search for a dog by weight
       app.get("/api/Dog/:Weight", function(req, res) {
-        db.Dog.findOne({
+        db.Dog.findAll({
           where: {
             Weight: req.params.Weight
           }
