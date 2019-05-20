@@ -13,7 +13,7 @@ function NavBar() {
         <Nav.Link className="logo"href="/home">Dinder<i className="fas fa-bone fa-sm"></i></Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">Search</Nav.Link>
+        <Nav.Link eventKey="/search">Search</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="link-2">Update Profile</Nav.Link>

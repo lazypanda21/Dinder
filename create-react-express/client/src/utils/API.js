@@ -20,8 +20,8 @@ export default {
     return axios.put("/api/Owner", username);
   },
   // get dogs by breed
-  getDogs :function(dogbreeds){
-    return axios.get("/api/Dog",dogbreeds);
+  getDogs :function(){
+    return axios.get("/api/Dog");
   },
   // search for owner by usernmae
 
@@ -58,5 +58,4 @@ export default {
   },
 
  
-
 };

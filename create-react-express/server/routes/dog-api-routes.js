@@ -17,6 +17,7 @@ module.exports = function(app) {
           Age: req.body.Age,
           Weight: req.body.Weight,
           Image: req.body.Image,
+          OwnerId :req.body.OwnerId,
         }).then(function(dbdog) {
           res.json(dbdog);
         });
