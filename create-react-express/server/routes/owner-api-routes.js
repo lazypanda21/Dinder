@@ -47,7 +47,16 @@ module.exports = function(app) {
     });
     });
 
-
+    // saving a new Owner info
+    app.post("/api/Owner", function(req, res) {
+      db.Owner.create({
+          UserName:req.body.UserName,
+          Contact: req.body.Contact,
+          Location:req.body.Location
+      }).then(function(dbdog) {
+          res.json(dbdog);
+      });
+      });
 
     app.get("/api/Owner/:UserName", function(req, res) {
 
@@ -62,16 +71,7 @@ module.exports = function(app) {
       });
 
 
-      // saving a new Owner info
-    app.post("/api/Owner", function(req, res) {
-        db.Owner.create({
-            UserName:req.body.UserName,
-            Contact: req.body.Contact,
-            Location:req.body.Location
-        }).then(function(dbdog) {
-            res.json(dbdog);
-        });
-        });
+  
 
 
   app.put("/api/Owner", function (req, res) {
