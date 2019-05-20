@@ -12,8 +12,8 @@ function Show() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Meet Jasper!</h3>
+            <p>Located in : St.Paul</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -24,8 +24,8 @@ function Show() {
           />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Meet Tucker</h3>
+            <p>Located in : Blaine</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -36,8 +36,8 @@ function Show() {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h3>Meet Ben</h3>
+            <p>Located in Woodbery</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

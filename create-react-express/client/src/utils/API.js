@@ -13,11 +13,11 @@ export default {
   //post a new owner to the owner table
 
   saveOwner: function(owner) {
-    return axios.post("api/Owner", owner);
+    return axios.post("/api/Owner", owner);
   },
 
   updateOwner: function(username){
-    return axios.put("api/Owner", username);
+    return axios.put("/api/Owner", username);
   },
   // get dogs by breed
   getDogs :function(dogbreeds){

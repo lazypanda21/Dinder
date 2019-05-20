@@ -18,12 +18,17 @@ class PageOne extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleLogSubmit = this.handleLogSubmit.bind(this);
-
+    this.toggleShow = this.toggleShow.bind(this);
     this.state = {
       show: false,
       UserName: "",
-      Password: ""
+      Password: "",
+      hidden:true,
     };
+  }
+
+  toggleShow() {
+    this.setState({hidden: !this.state.hidden});
   }
 
   handleClose() {
@@ -100,6 +105,8 @@ class PageOne extends Component {
                     onChange={this.handleInputChange}
                     name="Password"
                     placeholder="Password (required)"
+                    type = {this.state.hidden ? "password":"text"}
+                   
                   />
 
                   <ButtonToolbar>
@@ -143,6 +150,7 @@ class PageOne extends Component {
                 onChange={this.handleInputChange}
                 name="Password"
                 placeholder="Password (required)"
+                type = {this.state.hidden ? "password":"text"}
               />
               <FormBtn
                 disabled={!(this.state.UserName && this.state.Password)}
