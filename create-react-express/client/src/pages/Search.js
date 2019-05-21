@@ -22,7 +22,7 @@ constructor(props, context) {
       UserName: sessionStorage.getItem("user"),
       doginfo: [],
       searchby:"",
-      searchfor:"male",
+      searchfor:"",
     };
   }
 
@@ -33,61 +33,76 @@ constructor(props, context) {
     event.preventDefault();
    
     if (this.state.searchby && this.state.searchfor) {
-      switch (this.state.searchby){
-        case 'breed' :
-          
-            API.searchDogByBreed(this.state.searchfor)
-              .then(res => console.log(res.data))
-              .catch(err => console.log(err));
-            break;
-        case 'gender' :
-            console.log("hdhdhdhdhdhdhd",this.state.searchby,this.state.searchfor);
-            API.searchDogByGender(
+      API.searchDogByGender(
+              this.state.searchby,
               this.state.searchfor
             )
               .then(res => console.log(res.data))
               .catch(err => console.log(err));
-            break;
-        case 'age' :
-            API.searchDogByAge({
-              Age : this.state.searchfor
-            })
-              .then(res => this.setState({doginfo:res.data}))
-              .catch(err => console.log(err));
-            break;
-        case 'name' :
-            API.searchDogByName({
-              DogName : this.state.searchfor
-            })
-              .then(res => this.setState({doginfo:res.data}))
-              .catch(err => console.log(err));
-            break;
-        case 'weight' :
-            API.searchDogByWeight({
-              Weight : this.state.searchfor
-            })
-              .then(res => this.setState({doginfo:res.data}))
-              .catch(err => console.log(err));
-            break;
-        default:
-            API.getDogs()
-              .then(res => this.setState({doginfo:res.data}))
-              .catch(err => console.log(err));
+      // switch (this.state.searchby){
+      //   case 'breed' :
+          
+      //       API.searchDogByBreed(this.state.searchfor)
+      //         .then(res => console.log(res.data))
+      //         .catch(err => console.log(err));
+      //       break;
+      //   case 'gender' :
+      //       //console.log("hdhdhdhdhdhdhd",this.state.searchby,this.state.searchfor);
+      //       API.searchDogByGender(
+      //         this.state.searchby,
+      //         this.state.searchfor
+      //       )
+      //         .then(res => console.log(res.data))
+      //         .catch(err => console.log(err));
+      //       break;
+      //   case 'age' :
+      //       API.searchDogByAge({
+      //         Age : this.state.searchfor
+      //       })
+      //         .then(res => this.setState({doginfo:res.data}))
+      //         .catch(err => console.log(err));
+      //       break;
+      //   case 'name' :
+      //       API.searchDogByName({
+      //         DogName : this.state.searchfor
+      //       })
+      //         .then(res => this.setState({doginfo:res.data}))
+      //         .catch(err => console.log(err));
+      //       break;
+      //   case 'weight' :
+      //       API.searchDogByWeight({
+      //         Weight : this.state.searchfor
+      //       })
+      //         .then(res => this.setState({doginfo:res.data}))
+      //         .catch(err => console.log(err));
+      //       break;
+      //   default:
+      //       API.getDogs()
+      //         .then(res => this.setState({doginfo:res.data}))
+      //         .catch(err => console.log(err));
             
-      }
+      // }
     }
   };
 
   
 
 
-  handleInputChange = event => {
+  handleInputChange1 = event => {
+   // console.log(event.target.value)
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
 
+  // handleInputChange2 = event => {
+  //   console.log(event.target.value)
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
   
 
   render() {
@@ -102,15 +117,15 @@ constructor(props, context) {
             <Form id ="searchfordog">
             <Input
                 value={this.state.searchby}
-                onChange={this.handleInputChange}
+                onChange={this.handleInputChange1}
                 name="searchby"
                 placeholder="Search by breed, age, name or weight"
               />
 
               <Input
                 value={this.state.searchfor}
-                onChange={this.handleInputChange}
-                name="searchcriteria"
+                onChange={this.handleInputChange1}
+                name="searchfor"
                 placeholder="search"
               />
                

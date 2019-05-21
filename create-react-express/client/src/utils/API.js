@@ -44,8 +44,10 @@ export default {
   },
 
   // search for a dog by gender
-  searchDogByGender: function(Gender) {
-    return axios.get("/api/Dog/", Gender);
+  searchDogByGender: function(Search,Gender) {
+    console.log("hereeeeee",Gender);
+    console.log("hereeeeee", Search);
+    return axios.get("/api/Dog/"+ Search + "/" + Gender);
   },
    // search for a dog by weight
    searchDogByWeight: function(Weight) {

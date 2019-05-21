@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  console.log("heyeyyey")
     // retrieve all info about dogs
     app.get("/api/Dog", function(req, res) {
         db.Dog.findAll({attributes:['Breed']}).then(function(req) {
@@ -77,22 +78,17 @@ module.exports = function(app) {
       });
 
     //search for a dog by gender
-      app.get("/api/Dog/:Gender", function(req, res) {
+      app.get("/api/Dog/:Search/:Gender", function(req, res) {
+        console.log("heyyyyyyyyyy", req.params.Search,req.params.Gender);
+        let conditions = {};
+        let search = req.params.Search;
+        conditions[search]=req.params.Gender
         db.Dog.findAll({
-          where: {
-            Gender: req.Params.Gender
+
+            where: conditions
           }
-        }).then(function(result) {
-            res.json({
-                id: result.id,
-                UserName: result.UserName,
-                DogName: result.dogName,
-                Breed: result.Breed,
-                Gender: result.Gender,
-                Age : result.Age,
-                Weight: result.Weight,
-                Image: result.Image,
-              });
+        ).then(function(result) {
+            res.json(result);
         });
       });
 
