@@ -119,7 +119,7 @@ constructor(props, context) {
                 value={this.state.searchby}
                 onChange={this.handleInputChange1}
                 name="searchby"
-                placeholder="Search by breed, age, name or weight"
+                placeholder="Search by gender,breed, age, name or weight"
               />
 
               <Input

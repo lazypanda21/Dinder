@@ -36,8 +36,27 @@ constructor(props, context) {
       Ownerinfo :"",
 
     };
+
+  this.state = {
+    shown: true,
+  };
+  this.state = {
+    shown2: true,
+  };
+
   }
 
+
+  toggle1() {
+    this.setState({
+      shown: !this.state.shown
+    });
+  }
+  toggle2() {
+    this.setState({
+      shown2: !this.state.shown2
+    });
+  }
  
 
   handleOwnerSubmit = event => {
@@ -86,6 +105,20 @@ constructor(props, context) {
   
 
   render() {
+
+    var shown1 = {
+      display: this.state.shown ? "block" : "none"
+    };
+
+    var hidden1 = {
+      display: this.state.shown ? "none" : "block"
+    }
+
+
+    var hidden2 = {
+      display: this.state.shown2 ? "none" : "block"
+    }
+
     return (
       <Container>
         <NavBar></NavBar>
@@ -98,103 +131,111 @@ constructor(props, context) {
         </Row>
         <Row>
           <Col>
-          <h2>Hellow</h2>
-            <ul>
-                <li>User:{sessionStorage.getItem("user")}</li>
-                <li>Contact info:{this.state.Contact}</li>
-                <li>Location:{this.state.Location}</li>
+            <h2>Welcome!</h2>
+            <ul >
+              <li>User:{sessionStorage.getItem("user")}</li>
+              <li>Contact info:{this.state.Contact}</li>
+              <li>Location:{this.state.Location}</li>
             </ul>
-            <Col>
-            <h2>Update Profile</h2>
-            <Form id ="update">
+            <Button onClick={this.toggle1.bind(this)} variant="primary" size="lg">
+              Update
+            </Button>
+            <Col style={shown1}>
+              <h2>Update Profile</h2>
+              <Form id="update">
                 <Input
-                    value={this.state.UserName}
-                    onChange={this.handleInputChange}
-                    name="UserName"
-                    placeholder="User Name"
-                  />
+                  value={this.state.UserName}
+                  onChange={this.handleInputChange}
+                  name="UserName"
+                  placeholder="User Name"
+                />
 
-                  <Input
-                    value={this.state.Contact}
-                    onChange={this.handleInputChange}
-                    name="Contact"
-                    placeholder="Contact"
-                  />
-                  
-                 <Input
-                    value={this.state.Location}
-                    onChange={this.handleInputChange}
-                    name="Location"
-                    placeholder="Location"
-                  />
-                 
-                  <Button 
+                <Input
+                  value={this.state.Contact}
+                  onChange={this.handleInputChange}
+                  name="Contact"
+                  placeholder="Contact"
+                />
+
+                <Input
+                  value={this.state.Location}
+                  onChange={this.handleInputChange}
+                  name="Location"
+                  placeholder="Location"
+                />
+
+                <Button
                   disabled={!(this.state.UserName && this.state.Location && this.state.Contact)}
                   onClick={this.handleOwnerSubmit.bind(this)}
                   variant="primary" size="lg">
-                        Update
+                  Update
                   </Button>
-                  <Button variant="secondary" size="lg">
-                        Exit
+                <Button onClick={this.toggle1.bind(this)} variant="secondary" size="lg">
+                  Exit
                   </Button>
 
-            </Form>
-        </Col>
+              </Form>
+            </Col>
           </Col>
           <Col>
             <Dog></Dog>
-            <h2>Add Dog</h2>
-            <Form id ="add_dog">
+            <Button onClick={this.toggle2.bind(this)} variant="secondary" size="lg">
+              Add New Dog
+                  </Button>
+            <Col style={hidden2}>
+              <h2>Add Dog</h2>
+              <Form id="add_dog">
                 <Input
-                    value={this.state.DogName}
-                    onChange={this.handleInputChange}
-                    name="DogName"
-                    placeholder="Dog Name"
-                  />
+                  value={this.state.DogName}
+                  onChange={this.handleInputChange}
+                  name="DogName"
+                  placeholder="Dog Name"
+                />
 
-                  <Input
-                    value={this.state.Breed}
-                    onChange={this.handleInputChange}
-                    name="Breed"
-                    placeholder="Breed"
-                  />
-                  
-                 <Input
-                    value={this.state.Gender}
-                    onChange={this.handleInputChange}
-                    name="Gender"
-                    placeholder="Gender"
-                  />
-                 <Input
-                    value={this.state.Age}
-                    onChange={this.handleInputChange}
-                    name="Age"
-                    placeholder="yr old"
-                  />
-                  <Input
-                    value={this.state.Weight}
-                    onChange={this.handleInputChange}
-                    name="Weight"
-                    placeholder="KG"
-                  />
-                  <Input
-                    value={this.state.Image}
-                    onChange={this.handleInputChange}
-                    name="Image"
-                    placeholder="Image URL"
-                  />
+                <Input
+                  value={this.state.Breed}
+                  onChange={this.handleInputChange}
+                  name="Breed"
+                  placeholder="Breed"
+                />
 
-                  <Button 
-                  disabled={!(this.state.DogName && this.state.Breed && this.state.Gender&&this.state.Age && this.state.Weight && this.state.Image)}
+                <Input
+                  value={this.state.Gender}
+                  onChange={this.handleInputChange}
+                  name="Gender"
+                  placeholder="Gender"
+                />
+                <Input
+                  value={this.state.Age}
+                  onChange={this.handleInputChange}
+                  name="Age"
+                  placeholder="yr old"
+                />
+                <Input
+                  value={this.state.Weight}
+                  onChange={this.handleInputChange}
+                  name="Weight"
+                  placeholder="KG"
+                />
+                <Input
+                  value={this.state.Image}
+                  onChange={this.handleInputChange}
+                  name="Image"
+                  placeholder="Image URL"
+                />
+
+                <Button
+                  disabled={!(this.state.DogName && this.state.Breed && this.state.Gender && this.state.Age && this.state.Weight && this.state.Image)}
                   onClick={this.handleDogSubmit.bind(this)}
                   variant="primary" size="lg">
-                        Add
+                  Add
                   </Button>
-                  <Button variant="secondary" size="lg">
-                        Exit
+                <Button onClick={this.toggle2.bind(this)} variant="secondary" size="lg">
+                  Exit
                   </Button>
 
-            </Form>
+              </Form>
+            </Col>
           </Col>
           <Col>
             <p>column three</p>
