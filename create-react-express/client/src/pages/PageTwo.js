@@ -131,7 +131,7 @@ constructor(props, context) {
         </Row>
         <Row>
           <Col>
-            <h2>Welcome!</h2>
+            <h2>Welcome! {sessionStorage.getItem("user")}</h2>
             <ul >
               <li>User:{sessionStorage.getItem("user")}</li>
               <li>Contact info:{this.state.Contact}</li>
@@ -178,8 +178,23 @@ constructor(props, context) {
             </Col>
           </Col>
           <Col>
-            <Dog></Dog>
-            <Button onClick={this.toggle2.bind(this)} variant="secondary" size="lg">
+          <Col>
+
+
+            <h2>You can add new dogs</h2>
+            <ul>
+                
+                <li>Dog Name : {this.state.DogName} </li>
+                <li>Breed : {this.state.Breed}</li>
+                <li>Gender :{this.state.Gender}</li>
+                <li>Age :{this.state.Age}</li>
+                <li>Weight :{this.state.Weight}</li>
+                <li>Dog Image :{this.state.Image}</li>
+            </ul>
+        </Col>
+
+
+            <Button onClick={this.toggle2.bind(this)} variant="primary" size="lg">
               Add New Dog
                   </Button>
             <Col style={hidden2}>
@@ -237,9 +252,7 @@ constructor(props, context) {
               </Form>
             </Col>
           </Col>
-          <Col>
-            <p>column three</p>
-          </Col>
+       
         </Row>
       </Container>
     );

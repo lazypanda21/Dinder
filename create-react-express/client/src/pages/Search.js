@@ -1,44 +1,50 @@
 import React, { Component } from "react";
 import Show from "../components/Show";
 import NavBar from "../components/NavBar";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col,Card} from "react-bootstrap";
 import "./PageTwo.css";
 import { Input, FormBtn } from "../components/Form";
 import { Form,Button } from "react-bootstrap";
 import API from "../utils/API";
+import { List, ListItem } from "../components/List";
 import { throws } from "assert";
+import Dog from "../components/Dog";
+
 
 
 class Search extends Component {
 
-constructor(props, context) {
-    super(props, context);
-    
-    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+
+    //this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     
    
-    this.state = {
+    state = {
       show: false,
       UserName: sessionStorage.getItem("user"),
-      doginfo: [],
+      doginfo:[],
       searchby:"",
       searchfor:"",
     };
-  }
 
+  componentDidMount(){
+    this.handleSearchSubmit();
+  }
  
-  
- 
-  handleSearchSubmit = event => {
-    event.preventDefault();
-   
+  handleSearchSubmit = () => {
     if (this.state.searchby && this.state.searchfor) {
       API.searchDogByGender(
               this.state.searchby,
               this.state.searchfor
             )
-              .then(res => console.log(res.data))
-              .catch(err => console.log(err));
+              .then(res => this.setState({doginfo : res.data}, function(){
+                console.log(this.state.doginfo);
+              }))
+              .catch(err => console.log(err))
+            }
+          };
+        //  console.log(res.data[0])
+         // this.setState({doginfo : res.data[0]})
+        
       // switch (this.state.searchby){
       //   case 'breed' :
           
@@ -82,8 +88,7 @@ constructor(props, context) {
       //         .catch(err => console.log(err));
             
       // }
-    }
-  };
+  
 
   
 
@@ -139,12 +144,42 @@ constructor(props, context) {
             </Col>
             </Row>
             <Row>
-            <ul>
-                <li>User:{sessionStorage.getItem("user")}</li>
-                <li>Dog info:{this.state.doginfo}</li>
-            </ul>
+              
+            <br></br>
+              <h3>Search Results</h3>
+              </Row>
+            <Row>
             
-        </Row>
+              
+                {this.state.doginfo.map(dog =>(
+
+                    <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src = {dog.Image} />
+                    <Card.Body>
+                      <Card.Title>{dog.DogName}</Card.Title>
+                      <ul>
+                      <li>Breed : {dog.Breed}</li>
+                      <li>Gender : {dog.Gender}</li>
+                     <li>Age : {dog.Age} yr old</li>
+                      <li>Weight : {dog.Weight} KG </li>
+                      </ul>
+                      <Button variant="primary">Add to my list</Button>
+                    </Card.Body>
+                    </Card>
+                    // <ul>
+                    //   <li>DogName : {dog.DogName}</li>
+                    //   <li>Breed : {dog.Breed}</li>
+                    //   <li>Gender : {dog.Gender}</li>
+                    //   <li>Age : {dog.Age} yr old</li>
+                    //   <li>Weight : {dog.Weight} KG </li>
+                    // </ul>
+                ))}
+              
+          
+              </Row>
+          
+
+        
       </Container>
     );
   }

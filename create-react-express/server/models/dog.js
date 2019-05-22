@@ -52,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
         field: "Weight"
       },
       Image:{
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(1000),
         allowNull: false,
         defaultValue: "Not specified",
         field: "Image"
