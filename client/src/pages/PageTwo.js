@@ -64,11 +64,17 @@ constructor(props, context) {
         Location: this.state.Location,
         Contact: this.state.Contact,
       })
-        .then(res => this.setState({OwnerId:res.data.id}))
-        .catch(err => console.log(err));
+        .then(
+          res => (this.setState({OwnerId:res.data.id})),
+          //this.setState({ UserName: '', Location: '' , Contact: ''}),
+          alert(`Updated Profile`)
+
+        )
+        
+
+        .catch(err => console.log(err))
       
     }
-//=> this.setState({OwnerId:res.data.id}))
   };
 
   handleDogSubmit = event => {
@@ -83,7 +89,9 @@ constructor(props, context) {
         Image : this.state.Image,
         OwnerId : parseInt(this.state.OwnerId),
       })
-        .then(this.handleClose())
+        .then(this.handleClose(),
+        alert(`New Dog Added`)
+        )
         .catch(err => console.log(err));
     }
 
@@ -98,8 +106,10 @@ constructor(props, context) {
       [name]: value
     });
   };
-
   
+  alert = event =>{
+    alert(`Added New Dog`)
+  }
 
   render() {
 
@@ -158,7 +168,9 @@ constructor(props, context) {
 
                 <Button
                   disabled={!(this.state.UserName && this.state.Location && this.state.Contact)}
-                  onClick={this.handleOwnerSubmit.bind(this)}
+                  onClick={
+                    this.handleOwnerSubmit.bind(this)
+                  }
                   variant="primary" size="lg">
                   Update
                   </Button>
