@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { Container, Row, Col, Image, Form, ButtonToolbar, Button, Modal } from "react-bootstrap";
 import Title from "../components/Title";
 import "./PageOne.css";
@@ -48,6 +49,8 @@ class PageOne extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    
+
     if (this.state.UserName && this.state.Password) {
       API.saveUser({
         UserName: this.state.UserName,
@@ -63,6 +66,7 @@ class PageOne extends Component {
    
     if (this.state.UserName && this.state.Password) {
       let a = this;
+     
       sessionStorage.setItem("user", this.state.UserName);
       API.logUser({
         UserName: this.state.UserName,

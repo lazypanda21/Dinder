@@ -1,41 +1,53 @@
 var db = require("../models");
 var bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+
+
 module.exports = function(app) {
     // login validate
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:false}));
+    var hashed;
+
+
     app.post("/api/Login", function(req, res) {
+      
         db.OwnerLogin.findOne({
           where: {
             UserName: req.body.UserName,
-            Password: req.body.Password
           }
-        }).then(function(result) {
-          if (!result) {
-            return res.json({ login: false });
-          } else {
-            return res.json({
-              login: true,
-              UserName: result.UserName
-            });
-          }
+        })
+        .then(function(result) {
+         
+          console.log("db password is ",result.Password);
+          bcrypt.compare(req.body.Password, result.Password, function(err, success) {
+            if (!success) {
+              return res.json({ login: false });
+            } else {
+              return res.json({
+                login: true,
+                UserName: result.UserName
+              });
+            }
+              });
+        
         });
       });
 
-    // retrieve login info or use session storage
-      app.get("/api/Login", function(req, res) {
-        db.OwnerLogin.findAll({}).then(function(result) {
-          res.json(result);
-        });
-      });
-
+  
       // Create a new user when hit register
       app.post("/api/Login/create", function(req, res) {
-        db.OwnerLogin.create({
-          UserName: req.body.UserName,
-          Password: req.body.Password,
-        }).then(function(result)  {
-          res.json(result);
+
+        
+        bcrypt.hash(req.body.Password, 10, function(err, hash) {
+          hashed = hash;
+          db.OwnerLogin.create({
+            UserName: req.body.UserName,
+            Password: hash
+          }).then(function(result)  {
+            console.log("hashed is ", hashed);
+            res.json(result);
+          });
         });
       });
 
