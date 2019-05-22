@@ -1,23 +1,29 @@
-# Dinder
+# Create React Express App
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+## About This Boilerplate
 
-Dinder is an app that helps dog owners to find their pets hot dates!!
-  Deployed Link:
+This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
 
-### What you can do with Dinder:
+The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
 
-  - Search for dogs based on breed, distance, gender, and age.
-  - Explore new dogs and swipe left or right to ignore and keep! Just like Tinder!
-  - Create dog profiles and let others see.
+## Starting the app locally
 
-### Tech:
-- React
-- React Bootstrap
-- Sequelize
-- Google Map Api
+Start by installing front and backend dependencies. While in this directory, run the following command:
 
-### UI:
-![Home Page](./Readme_img/dinder-home.jpg)
+```
+npm install
+```
 
-![Search Result Page](./Readme_img/dinder-dashboard.jpg)
+This should install node modules within the server and the client folder.
+
+After both installations complete, run the following command in your terminal:
+
+```
+npm start
+```
+
+Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+
+## Deployment (Heroku)
+
+To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
