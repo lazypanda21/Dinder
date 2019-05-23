@@ -1,0 +1,10 @@
+.carousel-inner strict {
+   margin: auto;
+   max-width: 80%;
+   max-height: 40%;
+   
+ };
+ .carousel-inner > .item > img {
+  max-width: 80%;
+   max-height: 40%;
+}
