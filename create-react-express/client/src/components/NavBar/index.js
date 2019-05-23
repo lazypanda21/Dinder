@@ -13,17 +13,12 @@ function NavBar() {
         <Nav.Link className="logo"href="/">Dinder<i className="fas fa-bone fa-sm"></i></Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="/search" href='/search'>Search</Nav.Link>
+        <Nav.Link eventKey="/dogs" href='/dogs'>Dashboard</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-2">Update Profile</Nav.Link>
+        <Nav.Link eventKey="/search" href='/search'>Search <i class="fas fa-search"></i></Nav.Link>
       </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-3">Create a Dog</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-4">Start a Chat</Nav.Link>
-      </Nav.Item>
+      
       
     </Nav>
   );

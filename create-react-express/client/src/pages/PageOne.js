@@ -6,8 +6,7 @@ import "./PageOne.css";
 import Footer from "../components/Footer";
 import { Input, FormBtn } from "../components/Form";
 import API from "../utils/API";
-import { Link, Router } from "react-router-dom";
-import PageTwo from './PageTwo'
+
 import { withRouter } from 'react-router-dom';
 
 

@@ -3,12 +3,10 @@ import Show from "../components/Show";
 import NavBar from "../components/NavBar";
 import { Container, Row, Col,Card} from "react-bootstrap";
 import "./PageTwo.css";
-import { Input, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
 import { Form,Button } from "react-bootstrap";
 import API from "../utils/API";
-import { List, ListItem } from "../components/List";
-import { throws } from "assert";
-import Dog from "../components/Dog";
+
 
 
 
@@ -117,15 +115,23 @@ class Search extends Component {
         <Show></Show>
         <Row>
           <Col>
-          <h2>Hellow, {sessionStorage.getItem("user")}</h2>
+          <h2>Hello, {sessionStorage.getItem("user")}</h2>
 
             <Form id ="searchfordog">
-            <Input
-                value={this.state.searchby}
-                onChange={this.handleInputChange1}
-                name="searchby"
-                placeholder="Search by gender,breed, age, name or weight"
-              />
+            <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Search By...</Form.Label>
+                <Form.Control as="select"
+                  value={this.state.searchby}
+                  onChange={this.handleInputChange1}
+                  name="searchby">
+                  <option>select one</option>
+                  <option>Breed</option>
+                  <option>Gender</option>
+                  <option>DogName</option>
+                  <option>Age</option>
+                  <option>Weight</option>
+                </Form.Control>
+              </Form.Group>
 
               <Input
                 value={this.state.searchfor}

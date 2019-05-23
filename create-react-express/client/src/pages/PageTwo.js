@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import Show from "../components/Show";
 import NavBar from "../components/NavBar";
-import User from "../components/User";
-import UpdateUser from "../components/UpdateUser";
-import Dog from "../components/Dog";
-import AddDog from "../components/AddDog";
+import Footer from "../components/Footer";
 import { Container, Row, Col } from "react-bootstrap";
 import "./PageTwo.css";
-import { Input, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
 import { Form,Button } from "react-bootstrap";
 import API from "../utils/API";
 
@@ -67,11 +64,17 @@ constructor(props, context) {
         Location: this.state.Location,
         Contact: this.state.Contact,
       })
-        .then(res => this.setState({OwnerId:res.data.id}))
-        .catch(err => console.log(err));
+        .then(
+          res => (this.setState({OwnerId:res.data.id})),
+          //this.setState({ UserName: '', Location: '' , Contact: ''}),
+          alert(`Updated Profile`)
+
+        )
+        
+
+        .catch(err => console.log(err))
       
     }
-//=> this.setState({OwnerId:res.data.id}))
   };
 
   handleDogSubmit = event => {
@@ -86,7 +89,9 @@ constructor(props, context) {
         Image : this.state.Image,
         OwnerId : parseInt(this.state.OwnerId),
       })
-        .then(this.handleClose())
+        .then(this.handleClose(),
+        alert(`New Dog Added`)
+        )
         .catch(err => console.log(err));
     }
 
@@ -101,19 +106,16 @@ constructor(props, context) {
       [name]: value
     });
   };
-
   
+  alert = event =>{
+    alert(`Added New Dog`)
+  }
 
   render() {
 
     var shown1 = {
       display: this.state.shown ? "block" : "none"
     };
-
-    var hidden1 = {
-      display: this.state.shown ? "none" : "block"
-    }
-
 
     var hidden2 = {
       display: this.state.shown2 ? "none" : "block"
@@ -166,7 +168,9 @@ constructor(props, context) {
 
                 <Button
                   disabled={!(this.state.UserName && this.state.Location && this.state.Contact)}
-                  onClick={this.handleOwnerSubmit.bind(this)}
+                  onClick={
+                    this.handleOwnerSubmit.bind(this)
+                  }
                   variant="primary" size="lg">
                   Update
                   </Button>
@@ -254,6 +258,7 @@ constructor(props, context) {
           </Col>
        
         </Row>
+        <Footer></Footer>
       </Container>
     );
   }
